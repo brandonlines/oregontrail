@@ -1,16 +1,128 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Oregon Trail</title>
-  <meta http-equiv="refresh" content="0; url=./web/" />
-  <script>
-    window.location.replace("./web/");
-  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Oregon Trail v2 - Web</title>
+  <link rel="stylesheet" href="./styles.css" />
 </head>
 <body>
-  <p>Redirecting to the game...</p>
-  <p>If you are not redirected, open <a href="./web/">the web build</a>.</p>
+  <main class="app">
+    <header class="topbar">
+      <h1>Oregon Trail v2</h1>
+      <p>Browser Edition</p>
+    </header>
+
+    <section id="setupScreen" class="panel">
+      <h2>Start New Journey</h2>
+      <div class="grid">
+        <label>
+          Seed (optional)
+          <input id="seedInput" type="text" placeholder="random or fixed seed" />
+        </label>
+
+        <label>
+          Profession
+          <select id="professionSelect">
+            <option value="b">Banker (more money)</option>
+            <option value="c" selected>Carpenter (balanced)</option>
+            <option value="f">Farmer (hard mode, higher score)</option>
+          </select>
+        </label>
+
+        <label>
+          Departure Month
+          <select id="monthSelect">
+            <option value="0">March</option>
+            <option value="1">April</option>
+            <option value="2" selected>May</option>
+            <option value="3">June</option>
+            <option value="4">July</option>
+            <option value="5">August</option>
+          </select>
+        </label>
+      </div>
+
+      <h3>Party Names</h3>
+      <div class="grid names">
+        <input id="name1" type="text" placeholder="You" />
+        <input id="name2" type="text" placeholder="Alex" />
+        <input id="name3" type="text" placeholder="Sam" />
+        <input id="name4" type="text" placeholder="Jordan" />
+        <input id="name5" type="text" placeholder="Casey" />
+      </div>
+
+      <button id="startBtn" class="primary">Start Journey</button>
+    </section>
+
+    <section id="gameScreen" class="hidden">
+      <section class="panel status">
+        <h2>Status</h2>
+        <div id="statusGrid" class="status-grid"></div>
+      </section>
+
+      <section class="panel controls">
+        <h2>Actions</h2>
+        <div class="row">
+          <label>
+            Pace
+            <select id="paceSelect">
+              <option value="slow">Slow</option>
+              <option value="steady" selected>Steady</option>
+              <option value="grueling">Grueling</option>
+            </select>
+          </label>
+
+          <label>
+            Rations
+            <select id="rationsSelect">
+              <option value="bare">Bare</option>
+              <option value="meager" selected>Meager</option>
+              <option value="filling">Filling</option>
+            </select>
+          </label>
+
+          <label>
+            Travel Days
+            <input id="travelDaysInput" type="number" min="3" max="14" value="7" />
+          </label>
+        </div>
+
+        <div class="actions">
+          <button id="travelBtn" class="primary">Travel</button>
+          <button id="huntBtn">Hunt</button>
+          <button id="restBtn">Rest</button>
+          <button id="shopBtn">Shop</button>
+          <button id="newGameBtn">New Game</button>
+        </div>
+      </section>
+
+      <section class="panel shop">
+        <h2>Store</h2>
+        <div class="row">
+          <label>Item
+            <select id="shopItem">
+              <option value="food">Food ($1/lb)</option>
+              <option value="ammo">Ammo ($2)</option>
+              <option value="clothing">Clothing ($15)</option>
+              <option value="spare_parts">Spare Parts ($25)</option>
+              <option value="medicine">Medicine ($40)</option>
+            </select>
+          </label>
+          <label>Qty
+            <input id="shopQty" type="number" min="1" value="10" />
+          </label>
+          <button id="buyBtn">Buy</button>
+        </div>
+      </section>
+
+      <section class="panel log">
+        <h2>Trail Log</h2>
+        <div id="log" class="log-box"></div>
+      </section>
+    </section>
+  </main>
+
+  <script src="./app.js"></script>
 </body>
 </html>
